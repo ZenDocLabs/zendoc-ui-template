@@ -1,12 +1,12 @@
 import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
-import { AppContent } from "./components/AppContent";
+import { AppLayout } from "./components/AppLayout";
 import { DocProvider } from "./context/DocContext";
 
 const App = (): React.JSX.Element => {
   return <ThemeProvider>
     <DocProvider>
-      <AppContent />
+      <AppLayout />
     </DocProvider>
   </ThemeProvider>
 

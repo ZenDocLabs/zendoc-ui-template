@@ -19,6 +19,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import CodeIcon from '@mui/icons-material/Code';
 import { BaseDoc, FileDoc, FuncDoc, StructDoc } from '../doc/doc';
+import { useTranslation } from 'react-i18next';
 
 const drawerWidth = 280;
 
@@ -144,6 +145,7 @@ interface DocSidebarProps {
 }
 
 export const DocSidebar: React.FC<DocSidebarProps> = ({ packageDocs, onItemSelect }) => {
+  const { t } = useTranslation();
   return (
     <Drawer
       variant="permanent"
@@ -161,7 +163,7 @@ export const DocSidebar: React.FC<DocSidebarProps> = ({ packageDocs, onItemSelec
     >
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          Project Documentation
+          {t('sidebar.title')}
         </Typography>
       </Toolbar>
       <Divider />
