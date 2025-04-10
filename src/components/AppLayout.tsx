@@ -6,9 +6,11 @@ import { BaseDoc, FuncDoc, StructDoc } from '../doc/doc';
 import { useDoc } from '../context/DocContext';
 import { isFuncDoc, isStructDoc } from '../doc/guard';
 import { AppContent } from './AppContent';
+import { useNavigate } from 'react-router-dom';
 
 export const AppLayout = (): React.JSX.Element => {
   const { doc } = useDoc();
+  const navigate = useNavigate();
 
   const handleItemSelect = (
     item: BaseDoc | FuncDoc | StructDoc, 
@@ -21,6 +23,7 @@ export const AppLayout = (): React.JSX.Element => {
     console.log('Package:', packageName);
     console.log('File:', filename);
     if (isFuncDoc(item)) {
+      navigate(`/${filename}/${item.name}`)
       console.log('Function params:', item.params);
       console.log('Function return:', item.return);
     } else if (isStructDoc(item)) {

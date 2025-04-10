@@ -4,9 +4,10 @@ import { FuncDoc } from '../../doc/doc';
 
 interface FunctionDocumentationProps {
   funcDoc: FuncDoc;
+  id: string;
 }
 
-export const FunctionDocumentation = ({ funcDoc }: FunctionDocumentationProps): React.JSX.Element => {
+export const FunctionDocumentation = ({ funcDoc, id }: FunctionDocumentationProps): React.JSX.Element => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
 
@@ -15,7 +16,7 @@ export const FunctionDocumentation = ({ funcDoc }: FunctionDocumentationProps): 
   const textColor = isDark ? '#f8f8f2' : '#333';
 
   return (
-    <Box sx={{ padding: 3, backgroundColor, borderRadius: 2, boxShadow: 1 }}>
+    <Box sx={{ padding: 3, backgroundColor, borderRadius: 2, boxShadow: 1 }} id={id}>
       <Stack spacing={3}>
         <Typography variant="h5" fontWeight="bold" color={isDark ? 'white' : 'text.primary'}>
           {funcDoc.name}

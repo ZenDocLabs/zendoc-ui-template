@@ -4,6 +4,7 @@ import { GitHubChip } from "./GithubChip";
 import { useEnv } from "../../hooks/useEnv";
 import { isFuncDoc } from "../../doc/guard";
 import { FunctionDocumentation } from "./FunctionDocumentation";
+import { getFunctionId } from "./getFunctionId";
 
 interface FileDocumentationProps {
     fileDoc: FileDoc;
@@ -22,7 +23,7 @@ export const FileDocumentation = ({ fileDoc }: FileDocumentationProps): React.JS
                 <GitHubChip href={href} />
             </Box>
         {fileDoc.docs.map((doc, index) => (
-            isFuncDoc(doc) ? <FunctionDocumentation funcDoc={doc} key={index} /> : <></>
+            isFuncDoc(doc) ? <FunctionDocumentation funcDoc={doc} key={index} id={getFunctionId(fileDoc.filename, doc.name)} /> : <></>
         ))}
     </Box>
     )

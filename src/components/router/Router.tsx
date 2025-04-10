@@ -7,7 +7,7 @@ const Router = (): React.JSX.Element => {
     return (
         <Routes>
             <Route path="/" element={<AppLayout />}>
-                <Route index element={<Documentation />} />
+                <Route index path=":filename?/:functionName" element={<Documentation />} />
             </Route>
         </Routes>
     );
