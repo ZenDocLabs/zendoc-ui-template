@@ -1,5 +1,4 @@
-// src/context/ThemeContext.tsx
-import { createContext, useMemo, useState, useContext, ReactNode } from "react";
+import { createContext, useMemo, useState, useContext, ReactNode, useEffect } from "react";
 import { ThemeProvider as MuiThemeProvider, CssBaseline } from "@mui/material";
 import { createAppTheme } from "../theme/theme";
 
@@ -19,11 +18,20 @@ export const useThemeMode = () => {
 };
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState<ThemeMode>("light");
+  const savedMode = localStorage.getItem("themeMode") as ThemeMode | null;
+  const [mode, setMode] = useState<ThemeMode>(savedMode || "light");
 
   const theme = useMemo(() => createAppTheme(mode), [mode]);
 
-  const toggleTheme = () => setMode((prev) => (prev === "light" ? "dark" : "light"));
+  const toggleTheme = () => {
+    const newMode = mode === "light" ? "dark" : "light";
+    setMode(newMode);
+    localStorage.setItem("themeMode", newMode);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("themeMode", mode);
+  }, [mode]);
 
   return (
     <ThemeContext.Provider value={{ toggleTheme, mode }}>
