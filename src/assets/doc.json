@@ -1,0 +1,368 @@
+{
+    "packageDocs": {
+      "cmd": [
+        {
+          "filename": "generate.go",
+          "path": "cmd/generate.go",
+          "docs": []
+        },
+        {
+          "filename": "init.go",
+          "path": "cmd/init.go",
+          "docs": []
+        },
+        {
+          "filename": "root.go",
+          "path": "cmd/root.go",
+          "docs": []
+        }
+      ],
+      "config": [
+        {
+          "filename": "config.go",
+          "path": "config/config.go",
+          "docs": [
+            {
+              "name": "GetConfiguration",
+              "description": "Load the ZenDoc configuration from the configuration file",
+              "author": "",
+              "deprecated": "",
+              "type": "function",
+              "params": [],
+              "return": {
+                "type": "(*Config, error)",
+                "description": "A pointer to the loaded configuration and an error if loading fails"
+              },
+              "example": "GetConfiguration() => &Config{...}, nil"
+            }
+          ]
+        }
+      ],
+      "doc": [
+        {
+          "filename": "doc.go",
+          "path": "internal/doc/doc.go",
+          "docs": [
+            {
+              "name": "FuncDoc",
+              "description": "Struct to represent the documentation associated to a function",
+              "author": "Dorian TERBAH",
+              "deprecated": "",
+              "type": "struct",
+              "fields": [
+                {
+                  "name": "Params",
+                  "type": "[]Param",
+                  "description": "The params of the function"
+                },
+                {
+                  "name": "Return",
+                  "type": "*Return",
+                  "description": "The return type of the function, if it exists"
+                },
+                {
+                  "name": "Example",
+                  "type": "string",
+                  "description": "An example of the usage of this function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "export": [
+        {
+          "filename": "export.go",
+          "path": "core/export/export.go",
+          "docs": []
+        },
+        {
+          "filename": "json.go",
+          "path": "core/export/json.go",
+          "docs": [
+            {
+              "name": "Export",
+              "description": "Export the project documentation to a JSON file",
+              "author": "",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "projectDoc",
+                  "type": "doc.ProjectDoc",
+                  "description": "The documentation to export"
+                }
+              ],
+              "return": {
+                "type": "error",
+                "description": "An error if writing to file fails"
+              },
+              "example": "JSONExporter{}.Export(projectDoc)",
+              "struct": "JSONExporter"
+            }
+          ]
+        },
+        {
+          "filename": "web.go",
+          "path": "core/export/web.go",
+          "docs": [
+            {
+              "name": "Export",
+              "description": "Export the project documentation as JSON to stdout",
+              "author": "",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "projectDoc",
+                  "type": "doc.ProjectDoc",
+                  "description": "The documentation to export"
+                }
+              ],
+              "return": {
+                "type": "error",
+                "description": "An error if the export fails"
+              },
+              "example": "WebExporter{}.Export(projectDoc)",
+              "struct": "WebExporter"
+            }
+          ]
+        }
+      ],
+      "generate": [
+        {
+          "filename": "fileValidator.go",
+          "path": "internal/zendoc/generate/fileValidator.go",
+          "docs": []
+        },
+        {
+          "filename": "functionValidator.go",
+          "path": "internal/zendoc/generate/functionValidator.go",
+          "docs": []
+        },
+        {
+          "filename": "generate.go",
+          "path": "internal/zendoc/generate/generate.go",
+          "docs": [
+            {
+              "name": "GenerateDoc",
+              "description": "Generate the documentation in a JSON format, or in a web app",
+              "author": "Dorian TERBAH",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "outputFormat",
+                  "type": "string",
+                  "description": "Either \"json\" or \"web\""
+                }
+              ],
+              "return": {
+                "type": "error",
+                "description": "An error if the generation has failed"
+              },
+              "example": ""
+            }
+          ]
+        }
+      ],
+      "internal": [
+        {
+          "filename": "constant.go",
+          "path": "internal/constant.go",
+          "docs": []
+        }
+      ],
+      "parser": [
+        {
+          "filename": "parser.go",
+          "path": "core/parser/parser.go",
+          "docs": [
+            {
+              "name": "isValidateFileForDoc",
+              "description": "Check if a file is valid for documentation generation using the provided file validators",
+              "author": "",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "filepath",
+                  "type": "string",
+                  "description": "The file path to validate"
+                }
+              ],
+              "return": {
+                "type": "bool",
+                "description": "true if the file is valid, false otherwise"
+              },
+              "example": "",
+              "struct": "DocParser"
+            },
+            {
+              "name": "isValidateFunction",
+              "description": "Check if a function name is valid for documentation generation using the provided function validators",
+              "author": "",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "description": "The function name to validate"
+                }
+              ],
+              "return": {
+                "type": "bool",
+                "description": "true if the function is valid, false otherwise"
+              },
+              "example": "",
+              "struct": "DocParser"
+            },
+            {
+              "name": "ParseDocForDir",
+              "description": "Recursively parse documentation in a directory and its subdirectories",
+              "author": "",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "dirPath",
+                  "type": "string",
+                  "description": "The root path to scan"
+                },
+                {
+                  "name": "currentPath",
+                  "type": "string",
+                  "description": "The relative path used for output (maintains relative structure)"
+                }
+              ],
+              "return": {
+                "type": "*doc.ProjectDoc, error",
+                "description": "The parsed project documentation and an error if something went wrong"
+              },
+              "example": "ParseDocForDir(\"./myproject\", \"\")",
+              "struct": "DocParser"
+            },
+            {
+              "name": "ParseDocForFile",
+              "description": "Parse the documentation for a single file",
+              "author": "Dorian TERBAH",
+              "deprecated": "Just a small test",
+              "type": "function",
+              "params": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "description": "The file path"
+                }
+              ],
+              "return": {
+                "type": "(string, []doc.FuncDoc)",
+                "description": "The associated doc for the file. If no package is mentioned, it return an empty string and nil"
+              },
+              "example": "ParseDocForFile(\"myfile.go\")",
+              "struct": "DocParser"
+            },
+            {
+              "name": "ParseDocForStruct",
+              "description": "Parse documentation for a struct",
+              "author": "Dorian TERBAH",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "function",
+                  "type": "*ast.CommentGroup",
+                  "description": "The comments line associated to the struct"
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "description": "Name of the struct"
+                }
+              ],
+              "return": {
+                "type": "*doc.StructDoc",
+                "description": "Associated function documentation object, or nil if there is no comments with tags"
+              },
+              "example": "",
+              "struct": "DocParser"
+            },
+            {
+              "name": "ParseDocForFunction",
+              "description": "Parse documentation for a single function",
+              "author": "Dorian TERBAH",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "function",
+                  "type": "*ast.FuncDecl",
+                  "description": "The function to parse"
+                }
+              ],
+              "return": {
+                "type": "*doc.FuncDoc",
+                "description": "Associated function documentation object, or nil if there is not tagged comments"
+              },
+              "example": "",
+              "struct": "DocParser"
+            },
+            {
+              "name": "sanitizeLines",
+              "description": "Sanitize and flatten comment lines (block or single-line) to a slice of clean strings",
+              "author": "",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "doc",
+                  "type": "*ast.CommentGroup",
+                  "description": "The group of AST comments to sanitize"
+                }
+              ],
+              "return": {
+                "type": "[]string",
+                "description": "The cleaned lines"
+              },
+              "example": ""
+            },
+            {
+              "name": "getPackageName",
+              "description": "Retrieve the package name of a file",
+              "author": "Dorian TERBAH",
+              "deprecated": "",
+              "type": "function",
+              "params": [
+                {
+                  "name": "filePath",
+                  "type": "string",
+                  "description": "The path of the file"
+                }
+              ],
+              "return": {
+                "type": "(string, error)",
+                "description": "The associated package name and an error if the parsing failed"
+              },
+              "example": "getPackageName(\"./parser.go\") => parser"
+            }
+          ]
+        }
+      ],
+      "serializer": [
+        {
+          "filename": "serializer.go",
+          "path": "core/parser/serializer/serializer.go",
+          "docs": []
+        }
+      ],
+      "zendoc": [
+        {
+          "filename": "init.go",
+          "path": "internal/zendoc/init.go",
+          "docs": []
+        }
+      ]
+    }
+  }
+  

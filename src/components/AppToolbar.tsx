@@ -4,7 +4,7 @@ import { useThemeMode } from '../context/ThemeContext';
 import logo from './../assets/logo.png';
 import { useEnv } from '../hooks/useEnv';
 
-const Logo = () => <img src={logo} alt="Logo" style={{ width: 40, height: 40 }} />;
+const Logo = () => <img src={logo} alt="Logo" style={{ width: 50, height: 50 }} />;
 
 export const AppToolbar = (): React.JSX.Element => {
   const { toggleTheme, mode } = useThemeMode();
