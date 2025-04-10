@@ -2,5 +2,10 @@
     "welcome": "Documentation of {{appName}}",
     "sidebar": {
         "title": "Packages documentation"
+    },
+    "documentation": {
+        "package": {
+            "title": "Package {{packageName}}"
+        }
     }
 }
