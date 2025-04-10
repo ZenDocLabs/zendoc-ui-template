@@ -1,7 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FileDoc } from "../../doc/doc"
 import { GitHubChip } from "./GithubChip";
 import { useEnv } from "../../hooks/useEnv";
+import { isFuncDoc } from "../../doc/guard";
+import { FunctionDocumentation } from "./FunctionDocumentation";
 
 interface FileDocumentationProps {
     fileDoc: FileDoc;
@@ -12,10 +14,16 @@ export const FileDocumentation = ({ fileDoc }: FileDocumentationProps): React.JS
     const href = `${gitLink}/tree/${mainBranch}/${fileDoc.path}`;
 
     return (
-        <Box sx={{
-            marginLeft: 8
-        }}>
-            { fileDoc.filename } - <GitHubChip href={href} />
-        </Box>
+        <Box sx={{ padding: 2, backgroundColor: "background.paper", borderRadius: 2, boxShadow: 1 }}>
+            <Box sx={{ display: "flex", alignItems: "center", marginBottom: 2 }}>
+                <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                    {fileDoc.filename}
+                </Typography>
+                <GitHubChip href={href} />
+            </Box>
+        {fileDoc.docs.map((doc, index) => (
+            isFuncDoc(doc) ? <FunctionDocumentation funcDoc={doc} key={index} /> : <></>
+        ))}
+    </Box>
     )
 }

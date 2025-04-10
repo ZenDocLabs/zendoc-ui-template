@@ -31,7 +31,7 @@ export const AppLayout = (): React.JSX.Element => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <AppToolbar />
-      <Box sx={{ display: 'flex', flexGrow: 1 }}>
+      <Box sx={{ display: 'flex', flexGrow: 1, mt: 4 }}>
         <DocSidebar 
           packageDocs={doc.packageDocs} 
           onItemSelect={handleItemSelect}

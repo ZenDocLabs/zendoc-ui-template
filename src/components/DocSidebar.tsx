@@ -155,7 +155,8 @@ export const DocSidebar: React.FC<DocSidebarProps> = ({ packageDocs, onItemSelec
         '& .MuiDrawer-paper': {
           width: drawerWidth,
           boxSizing: 'border-box',
-          position: 'relative',
+          position: 'fixed',
+          top: '64px',
           overflowY: 'auto',
           height: 'calc(100vh - 64px)',
         },

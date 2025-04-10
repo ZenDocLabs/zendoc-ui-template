@@ -12,7 +12,7 @@ export const AppToolbar = (): React.JSX.Element => {
   const isDarkMode = mode === 'dark';
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         {/* Logo */}
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
