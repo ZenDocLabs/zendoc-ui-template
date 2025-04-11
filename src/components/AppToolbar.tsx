@@ -3,6 +3,7 @@ import { GitHub, Search, DarkMode, LightMode } from '@mui/icons-material';
 import { useThemeMode } from '../context/ThemeContext';
 import logo from './../assets/logo.png';
 import { useEnv } from '../hooks/useEnv';
+import { VersionSelect } from './toolbar/VersionSelect';
 
 const Logo = () => <img src={logo} alt="Logo" style={{ width: 50, height: 50 }} />;
 
@@ -17,6 +18,7 @@ export const AppToolbar = (): React.JSX.Element => {
         {/* Logo */}
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
           <Logo />
+          <VersionSelect />
         </Box>
 
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
