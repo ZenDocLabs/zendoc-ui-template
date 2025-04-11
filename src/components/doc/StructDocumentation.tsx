@@ -3,6 +3,7 @@ import { Box, Typography, Chip, Stack, Divider, useTheme } from '@mui/material'
 import { StructDoc, FuncDoc } from '../../doc/doc'
 import { FunctionDocumentation } from './FunctionDocumentation'
 import { getSectionId } from './getSectionId'
+import { useTranslation } from 'react-i18next'
 
 interface StructDocumentationProps {
   structDoc: StructDoc
@@ -17,6 +18,7 @@ export const StructDocumentation = ({
   fileName,
   id,
 }: StructDocumentationProps): React.JSX.Element => {
+  const { t } = useTranslation();
   const theme = useTheme()
   const isDark = theme.palette.mode === 'dark'
 
@@ -46,7 +48,7 @@ export const StructDocumentation = ({
         {structDoc.fields.length > 0 && (
           <Box>
             <Typography variant="subtitle1" fontWeight="bold" color={textColor}>
-              Fields
+              {t('documentation.struct.fields')}
             </Typography>
             <Stack spacing={1} sx={{ mt: 1 }}>
               {structDoc.fields.map((field, idx) => (
@@ -78,7 +80,7 @@ export const StructDocumentation = ({
         <Divider sx={{ marginY: 2 }} />
 
         <Typography variant="caption" color="text.secondary">
-          Author: {structDoc.author}
+          {t('documentation.struct.author', { author: structDoc.author })}
         </Typography>
 
         {/* Associated methods */}
@@ -86,7 +88,7 @@ export const StructDocumentation = ({
           <Box>
             <Divider sx={{ marginY: 3 }} />
             <Typography variant="h6" fontWeight="bold" color={textColor} sx={{ mb: 2 }}>
-              Methods
+              {t('documentation.struct.methods')}
             </Typography>
             <Stack spacing={4}>
               {relatedFuncs.map((func, i) => (

@@ -6,6 +6,18 @@
     "documentation": {
         "package": {
             "title": "Package {{packageName}}"
+        },
+        "struct": {
+            "methods": "Methods",
+            "author": "Author {{author}}",
+            "fields": "Fields"
+        },
+        "function": {
+            "deprecated": "Deprecated",
+            "parameters": "Parameters",
+            "returns": "Returns",
+            "example": "Example",
+            "author": "Author {{author}}"
         }
     }
 }
