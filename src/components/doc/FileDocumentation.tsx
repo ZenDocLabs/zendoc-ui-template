@@ -1,10 +1,11 @@
 import { Box, Typography } from "@mui/material";
-import { FileDoc } from "../../doc/doc"
+import { FileDoc, StructDoc } from "../../doc/doc"
 import { GitHubChip } from "./GithubChip";
 import { useEnv } from "../../hooks/useEnv";
 import { isFuncDoc } from "../../doc/guard";
 import { FunctionDocumentation } from "./FunctionDocumentation";
-import { getFunctionId } from "./getFunctionId";
+import { getSectionId } from "./getSectionId";
+import { StructDocumentation } from "./StructDocumentation";
 
 interface FileDocumentationProps {
     fileDoc: FileDoc;
@@ -22,9 +23,16 @@ export const FileDocumentation = ({ fileDoc }: FileDocumentationProps): React.JS
                 </Typography>
                 <GitHubChip href={href} />
             </Box>
-        {fileDoc.docs.map((doc, index) => (
-            isFuncDoc(doc) ? <FunctionDocumentation funcDoc={doc} key={index} id={getFunctionId(fileDoc.filename, doc.name)} /> : <></>
-        ))}
+        {fileDoc.docs.map((doc, index) => {
+            const element = isFuncDoc(doc) ? 
+                    <FunctionDocumentation funcDoc={doc} key={index} id={getSectionId(fileDoc.filename, doc.name)} /> : 
+                    <StructDocumentation structDoc={doc as StructDoc} key={index} id={getSectionId(fileDoc.filename, doc.name)} />
+            return (
+                <Box key={index} sx={{ mb: 8 }}>
+                    { element }
+                </Box>
+            )
+        })}
     </Box>
     )
 }
