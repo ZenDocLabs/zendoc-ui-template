@@ -80,7 +80,7 @@ export const StructDocumentation = ({
         <Divider sx={{ marginY: 2 }} />
 
         <Typography variant="caption" color="text.secondary">
-          {t('documentation.struct.author', { author: structDoc.author })}
+          {t('documentation.struct.author', { author: structDoc.author ?? "unknown" })}
         </Typography>
 
         {/* Associated methods */}

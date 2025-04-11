@@ -86,7 +86,7 @@ export const FunctionDocumentation = ({ funcDoc, id }: FunctionDocumentationProp
 
         <Divider sx={{ marginY: 2 }} />
         <Typography variant="caption" color="text.secondary">
-          {t('documentation.function.author', { author: funcDoc.author })}
+          {t('documentation.function.author', { author: funcDoc.author ?? "unknown" })}
         </Typography>
       </Stack>
     </Box>
