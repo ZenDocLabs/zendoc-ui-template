@@ -86,11 +86,6 @@ export const FunctionDocumentation = ({ funcDoc, id }: FunctionDocumentationProp
         <Typography variant="caption" color="text.secondary">
           Author: {funcDoc.author}
         </Typography>
-        {funcDoc.struct && (
-          <Typography variant="caption" color="text.secondary">
-            Attached to struct: <code>{funcDoc.struct}</code>
-          </Typography>
-        )}
       </Stack>
     </Box>
   );
